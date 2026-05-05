@@ -1,7 +1,6 @@
 #Neon Racer ULTIMATE
 
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,7 +23,7 @@
       --shadow: 0 8px 30px rgba(0,0,0,.35);
       --radius: 18px;
     }
-
+    
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
