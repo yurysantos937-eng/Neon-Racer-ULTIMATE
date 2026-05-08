@@ -8,7 +8,7 @@
   <style>
     :root {
       --bg: #0a0b10;
-      --road: #1a1e29
+      --road: #1a1e29;
       --lane: #2a3040;
       --stripe: #dadde6;
       --accent: #6cf;
