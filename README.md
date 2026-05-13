@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Neon Racer ULTIMATE</title>
+  <title>Neon Racer Turbo</title>
   <style>
     :root {
       --bg: #0a0b10;
@@ -10,7 +11,7 @@
       --lane: #2a3040;
       --stripe: #dadde6;
       --accent: #6cf;
-      --car: #2ee6a6;
+      --car: #2244ff;
       --obstacle: #ff5577;
       --power-nitro: #00d0ff;
       --power-shield: #ffd54a;
@@ -19,7 +20,7 @@
       --shadow: 0 8px 30px rgba(0,0,0,.35);
       --radius: 18px;
     }
-    
+
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
@@ -42,43 +43,103 @@
       outline: 1px solid rgba(255,255,255,.06);
     }
 
-    /* HUD */
-    .hud {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-    }
-    .hud-top {
-      display: flex; gap: 10px; align-items: center; justify-content: space-between;
-      padding: 12px 14px;
-      flex-wrap: wrap;
-    }
-    .pill {
-      pointer-events: auto;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.08);
-      padding: 8px 12px;
-      border-radius: 999px;
-      backdrop-filter: blur(6px);
-      font-weight: 600;
-      letter-spacing: .2px;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .muted { color: var(--muted); font-weight: 500; }
+    /* =========================
+        HUD MAIS LIMPA
+    ========================= */
 
-    .btn {
-      pointer-events: auto;
-      border: 1px solid rgba(255,255,255,.14);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      color: var(--text);
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform .06s ease, filter .2s ease, background .2s ease;
-      user-select: none;
+    .hud-bottom{
+      position:absolute;
+      bottom:15px;
+      left:0;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      padding:0 12px;
+      pointer-events:none;
+    }
+
+    /* BOTÕES DE MOVIMENTO */
+    .controls{
+      display:flex;
+      gap:8px;
+      pointer-events:auto;
+    }
+
+    .control-btn{
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      background:rgba(0,0,0,0.25);
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
+
+      color:white;
+      font-size:24px;
+      font-weight:bold;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      transition:0.2s;
+      user-select:none;
+    }
+
+    .control-btn:active{
+      transform:scale(0.92);
+      background:rgba(255,255,255,0.15);
+    }
+
+    /* BOTÕES DO MENU */
+    .row{
+        display:flex;
+        gap:8px;
+      pointer-events:auto;
+    }
+
+    .btn{
+        padding:10px 14px;
+        border-radius:14px;
+        border:none;
+        background:rgba(0,0,0,0.35);
+        color:white;
+        font-size:13px;
+        font-weight:700;
+        backdrop-filter:blur(8px);
+        transition:0.2s;
+    }
+
+    .btn:hover{
+        background:rgba(255,255,255,0.12);
+    }
+
+    .btn:active{
+        transform:scale(0.95);
+    }
+
+    /* BOTÃO JOGAR */
+    .btn.primary{
+      background:linear-gradient(
+        180deg,
+        #00c3ff,
+        #0066ff
+    );
+
+      box-shadow:
+        0 0 15px rgba(0,150,255,0.5);
+    }
+
+    /* BOTÃO REINICIAR */
+    .btn.danger{
+      background:linear-gradient(
+      180deg,
+      #ff4d6d,
+      #d90429
+    );
+
+      box-shadow:
+        0 0 15px rgba(255,0,80,0.4);
     }
     .btn:hover { filter: brightness(1.08); }
     .btn:active { transform: translateY(1px) scale(.98); }
@@ -104,6 +165,92 @@
     }
     .control-btn:active { transform: scale(.96); background: rgba(255,255,255,.1); }
 
+    /* =========================
+          MENU FLUTUANTE
+    ========================= */
+
+    .game-menu{
+      position:fixed;
+      top:15px;
+      right:15px;
+      z-index:9999;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      pointer-events:auto;
+    }
+
+    .menu-btn{
+      width:48px;
+      height:48px;
+      border:none;
+      border-radius:50%;
+      background:rgba(0,0,0,0.45);
+      backdrop-filter:blur(10px);
+      color:white;
+      font-size:26px;
+      font-weight:bold;
+      cursor:pointer;
+      box-shadow:
+      0 0 20px rgba(0,0,0,0.3);
+      transition:0.2s;
+    }
+
+    .menu-btn:hover{
+      transform:scale(1.05);
+    }
+
+    .menu-btn:active{
+      transform:scale(0.92);
+    }
+
+    .menu-options{
+      display:none;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:8px;
+      margin-top:10px;
+      animation:menuOpen 0.2s ease;
+    }
+    .menu-item{
+      min-width:40px;
+      padding:-12px;
+      border:none;
+      border-radius:14px;
+      background:rgba(0,0,0,0.45);
+      backdrop-filter:blur(10px);
+      color:white;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    @keyframes menuOpen{
+
+      from{
+      opacity:0;
+      transform:translateY(-10px);
+    }
+
+      to{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    }
+
+    .menu-item:hover{
+      background:rgba(255,255,255,0.12);
+    }
+
+    .menu-item:active{
+      transform:scale(0.96);
+    }
+
+    .menu-item.danger{
+      background:rgba(255,50,80,0.25);
+    }
     /* Center overlays */
     .overlay {
       position: absolute; inset: 0; display: grid; place-items: center; text-align: center;
@@ -147,6 +294,7 @@
         <div class="pill" id="speed-pill">⚡ <span class="muted">Vel.</span> <span id="speed">0</span></div>
         <div class="pill" id="best-pill" title="Seu melhor">⭐ <span class="muted">Recorde</span> <span id="best">0</span></div>
         <div class="badge" id="nitro-badge" title="Nitro ativo" style="opacity:.5;">
+        🪙 Money: <span id="money">0</span><br>
           <span class="dot nitro"></span>
           <span>Nitro</span>
           <span id="nitro-time" class="muted">0.0s</span>
@@ -166,10 +314,20 @@
           <div class="control-btn" id="btn-left" aria-label="Esquerda">◀</div>
           <div class="control-btn" id="btn-right" aria-label="Direita">▶</div>
         </div>
-        <div class="row">
-          <button class="btn" id="btn-pause" aria-label="Pausar (P)">Pausar</button>
-          <button class="btn primary" id="btn-start" aria-label="Iniciar/Retomar (Enter)">Jogar</button>
-          <button class="btn danger" id="btn-restart" aria-label="Reiniciar (R)">Reiniciar</button>
+        <div class="game-menu">
+          <button class="menu-btn" id="menu-btn">☰</button>
+        
+          <div class="menu-options" id="menu-options">
+        
+            <button class="menu-item" id="btn-pause">
+              ⏸ Pausar
+            </button>
+        
+            <button class="menu-item danger" id="btn-restart">
+              ↻ Reiniciar
+            </button>
+        
+          </div>
         </div>
       </div>
     </div>
@@ -208,6 +366,7 @@
 
     // HUD elements
     const scoreEl = document.getElementById('score');
+    const moneyEl = document.getElementById('money');
     const speedEl = document.getElementById('speed');
     const bestEl  = document.getElementById('best');
     const best = Number(localStorage.getItem('neonRacerBest')||0);
@@ -237,6 +396,19 @@
     const startMuted = document.getElementById('start-muted');
     const againBtn = document.getElementById('again');
     const shareBtn = document.getElementById('share');
+
+    const menuBtn = document.getElementById('menu-btn');
+    const menuOptions = document.getElementById('menu-options');
+
+    menuBtn.addEventListener('click', ()=>{
+
+      if(menuOptions.style.display === 'flex'){
+      menuOptions.style.display = 'none';
+      } else {
+      menuOptions.style.display = 'flex';
+    }
+
+    });
 
     // Audio: music tag + WebAudio SFX
     const bgm = document.getElementById('bgm');
@@ -281,11 +453,38 @@
     const laneW = roadW / lanes;
 
     // Player
-    const player = { w: 44, h: 88, lane: 1, x: 0, y: 0, color: getCss('--car') };
+    const player = { w: 60, h: 95, lane: 1, x: 0, y: 0, color: getCss('--car') };
 
     // Entities
     const obstacles = [];
     const powerups = []; // {type:'nitro'|'shield', lane, x, y, r}
+
+    // =========================
+    // SISTEMA DE MOEDAS
+    // =========================
+    const coins = [];
+    let money = 0;
+    function spawnCoin(){
+    const lane = Math.floor(Math.random() * lanes);
+    coins.push({lane, x: laneCenter(lane), y: -50, r: 12});
+    }
+
+    function drawCoins(){
+
+    for(const c of coins){
+      ctx.save();
+      ctx.shadowColor = 'gold';
+      ctx.shadowBlur = 20;
+      ctx.fillStyle = 'gold';
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#000';
+      ctx.font = 'bold 14px Arial';
+      ctx.fillText('$', c.x - 4, c.y + 4);
+      ctx.restore();
+      }
+    }
 
     // Weather / Day-Night
     const PRECIP_MAX = 120;
@@ -407,16 +606,64 @@
 
     function drawCar(x, y, w, h, color){
       ctx.save();
-      ctx.shadowColor = color.trim();
-      ctx.shadowBlur = 18;
+
+    // brilho neon
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 20;
+
+    // =========================
+    // AEROFÓLIO TRASEIRO
+    // =========================
+      ctx.fillStyle = '#111';
+      ctx.fillRect( x - w*0.45, y + h*0.28, w*0.9, h*0.08);
+
+    // =========================
+    // CORPO PRINCIPAL
+    // =========================
       ctx.fillStyle = color;
-      roundRect(x - w/2, y - h/2, w, h, 10, true, false);
-      ctx.fillStyle = 'rgba(255,255,255,.15)';
-      roundRect(x - w*0.32, y - h*0.28, w*0.64, h*0.22, 8, true, false);
-      ctx.fillStyle = 'rgba(255,255,255,.85)';
-      ctx.fillRect(x - w*0.36, y - h*0.5, w*0.24, 4);
-      ctx.fillRect(x + w*0.12, y - h*0.5, w*0.24, 4);
+      ctx.beginPath();
+      ctx.moveTo(x, y - h*0.5);
+      ctx.lineTo(x + w*0.22, y - h*0.15);
+      ctx.lineTo(x + w*0.18, y + h*0.35);
+      ctx.lineTo(x - w*0.18, y + h*0.35);
+      ctx.lineTo(x - w*0.22, y - h*0.15);
+      ctx.closePath();
+      ctx.fill();
+
+    // =========================
+    // CABINE
+    // =========================
+      ctx.fillStyle = '#222';
+      ctx.beginPath();
+      ctx.ellipse(x, y - h*0.12, w*0.12, h*0.16, 0, 0, Math.PI*2);
+      ctx.fill();
+
+    // =========================
+    // ASA DIANTEIRA
+    // =========================
+      ctx.fillStyle = '#0ff';
+      ctx.fillRect(x - w*0.35, y - h*0.52, w*0.7, h*0.06);
+
+    // =========================
+    // RODAS
+    // =========================
+      ctx.fillStyle = '#000';
+      const rw = w*0.12;
+      const rh = h*0.16;
+
+    // dianteiras
+      ctx.fillRect(x - w*0.34, y - h*0.34, rw, rh);
+      ctx.fillRect(x + w*0.22, y - h*0.34,rw, rh);
+
+    // traseiras
+      ctx.fillRect(x - w*0.34, y + h*0.12, rw, rh);
+      ctx.fillRect(x + w*0.22, y + h*0.12, rw, rh);
+
+    // detalhe central
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(x - 2, y - h*0.42, 4, h*0.6);
       ctx.restore();
+
     }
 
     function drawPowerup(p){
@@ -509,6 +756,9 @@
       // obstacles
       for(const o of obstacles){ drawCar(o.x, o.y, o.w, o.h, o.color); }
 
+      // moedas
+        drawCoins();
+
       // player (with shield aura)
       if(shieldActive){
         ctx.save();
@@ -580,7 +830,8 @@
 
     function loop(t){
       if(!alive) return;
-      const dt = Math.min(32, t - last) / 1000; // seconds
+      const dt = Math.min(0.032, (t - last) / 1000); // seconds
+      
       last = t;
       if(paused){ requestAnimationFrame(loop); return; }
 
@@ -615,6 +866,28 @@
       // move entities
       for(const o of obstacles){ o.y += roadSpeed * dt; }
       for(const p of powerups){ p.y += roadSpeed * dt * 0.9; }
+
+      // moedas
+      for(const c of coins){ c.y += roadSpeed * dt; }
+
+      // spawn moedas
+      if(Math.random() < 0.015){ spawnCoin(); }
+
+      // coleta moedas
+      for(let i = coins.length-1; i >= 0; i--){
+        const c = coins[i];
+
+      if(Math.abs(player.x - c.x) < 35 && Math.abs(player.y - c.y) < 50){ 
+        money += 10;
+        moneyEl.textContent = money;
+        coins.splice(i,1);
+        beep(1200, 0.05, 'triangle', 0.04);
+      }
+
+      if(c.y > H + 50){
+        coins.splice(i,1);
+      }
+      }
 
       // cleanup off-screen
       while(obstacles.length && obstacles[0].y - obstacles[0].h/2 > H+40){ obstacles.shift(); score += 10; beep(990, 0.04, 'triangle', 0.02); }
@@ -695,9 +968,24 @@
 
     // Full-area tap: left/right half
     wrap.addEventListener('pointerdown', (e)=>{
+
+    if(
+      e.target.closest('.controls') ||
+      e.target.closest('.game-menu') ||
+      e.target.closest('.btn') ||
+      e.target.closest('.menu-btn') ||
+      e.target.closest('.menu-item')
+      ) return;
+
       const rect = wrap.getBoundingClientRect();
       const x = e.clientX - rect.left;
-      if(x < rect.width/2) moveLeft(); else moveRight();
+
+    if(x < rect.width/2){
+        moveLeft();
+    }else{
+        moveRight();
+    }
+
     });
 
     // Buttons
@@ -712,7 +1000,6 @@
 
     btnPause.addEventListener('click', togglePause);
     btnRestart.addEventListener('click', restart);
-    btnStartTop.addEventListener('click', startGame);
 
     startPlay.addEventListener('click', ()=>{ muted=false; try{bgm.volume=0.4; bgm.play().catch(()=>{});}catch{} startGame(); });
     startMuted.addEventListener('click', ()=>{ muted=true; try{bgm.pause();}catch{} startGame(); });
@@ -742,4 +1029,3 @@
   </script>
 </body>
 </html>
-
