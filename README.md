@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
@@ -26,7 +27,8 @@
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
       color: var(--text);
-      background: radial-gradient(1200px 800px at 50% -200px, #111627 0%, #0b0e17 40%, #07080d 100%);
+      background:
+    radial-gradient(circle at top,#18233d 0%,#0b0e17 35%,#05060a 100%);
       display: grid;
       place-items: center;
     }
@@ -45,50 +47,6 @@
     /* =========================
         HUD MAIS LIMPA
     ========================= */
-
-    .hud-bottom{
-      position:absolute;
-      bottom:15px;
-      left:0;
-      width:100%;
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      padding:0 12px;
-      pointer-events:none;
-    }
-
-    /* BOTÕES DE MOVIMENTO */
-    .controls{
-      display:flex;
-      gap:8px;
-      pointer-events:auto;
-    }
-
-    .control-btn{
-      width:58px;
-      height:58px;
-      border-radius:18px;
-      background:rgba(0,0,0,0.25);
-      border:1px solid rgba(255,255,255,0.08);
-      backdrop-filter:blur(10px);
-
-      color:white;
-      font-size:24px;
-      font-weight:bold;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      transition:0.2s;
-      user-select:none;
-    }
-
-    .control-btn:active{
-      transform:scale(0.92);
-      background:rgba(255,255,255,0.15);
-    }
 
     /* BOTÕES DO MENU */
     .row{
@@ -126,7 +84,7 @@
     );
 
       box-shadow:
-        0 0 15px rgba(0,150,255,0.5);
+        0 0 15px rgba(0, 119, 255, 0.5);
     }
 
     /* BOTÃO REINICIAR */
@@ -213,7 +171,7 @@
     }
     .menu-item{
       min-width:40px;
-      padding:-12px;
+      padding:12px;
       border:none;
       border-radius:14px;
       background:rgba(0,0,0,0.45);
@@ -276,10 +234,319 @@
     .dot { width: 10px; height: 10px; border-radius: 50%; }
     .dot.nitro { background: var(--power-nitro); box-shadow: 0 0 12px var(--power-nitro); }
     .dot.shield { background: var(--power-shield); box-shadow: 0 0 12px var(--power-shield); }
+
+    /* =========================
+    SELETOR DE COR DO CARRO
+    ========================= */
+
+    .car-color-picker{
+      position:absolute;
+      top:15px;
+      left:15px;
+
+      display:flex;
+      gap:8px;
+      z-index:9999;
+      padding:8px 10px;
+      border-radius:16px;
+      background:rgba(0,0,0,0.35);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .color-btn{
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      border:2px solid rgba(255,255,255,0.25);
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    .color-btn:hover{
+      transform:scale(1.15);
+    }
+
+    .color-btn.active{
+      transform:scale(1.2);
+      border:2px solid white;
+      box-shadow:
+      0 0 12px rgba(255,255,255,0.8);
+    }
+
+    @media (max-width:480px){
+
+    .control-btn{
+      width:58px;
+      height:58px;
+      font-size:24px;
+    }
+
+    .menu-btn{
+      width:44px;
+      height:44px;
+    }
+
+    .hud-top{
+      transform:scale(.92);
+      transform-origin:top left;
+    }
+    }
+
+    /* =========================
+            STYLE START
+    ========================= */
+
+.subway-start{
+  position:absolute;
+  inset:0;
+  z-index:99999;
+
+  overflow:hidden;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+
+  background:
+  linear-gradient(
+    180deg,
+    #0f172a 0%,
+    #111827 45%,
+    #020617 100%
+  );
+
+  animation:bgMove 8s linear infinite;
+}
+
+/* FUNDO */
+.subway-bg{
+  position:absolute;
+  inset:0;
+
+  background:
+  radial-gradient(circle at center,
+  rgba(0,255,255,.15),
+  transparent 60%),
+
+  repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,.03) 0px,
+    rgba(255,255,255,.03) 2px,
+    transparent 2px,
+    transparent 40px
+  );
+
+  opacity:.8;
+}
+
+/* LOGO */
+.subway-logo{
+  margin-top:70px;
+  z-index:2;
+  text-align:center;
+}
+
+.subway-logo h1{
+  margin:0;
+
+  font-size:52px;
+  font-weight:900;
+
+  letter-spacing:3px;
+
+  color:#00d0ff;
+
+  text-shadow:
+  0 0 10px #00d0ff,
+  0 0 25px #00d0ff,
+  0 0 45px rgba(0,208,255,.8);
+}
+
+.subway-logo span{
+  display:block;
+
+  margin-top:6px;
+
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:5px;
+
+  opacity:.9;
+}
+
+/* CENTRO */
+.subway-center{
+  z-index:2;
+
+  width:100%;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  margin-bottom:55px;
+}
+
+/* TOQUE PARA JOGAR */
+.tap-play{
+  padding:18px 42px;
+
+  border-radius:999px;
+
+  font-size:22px;
+  font-weight:900;
+
+  color:white;
+
+  background:
+  linear-gradient(
+    180deg,
+    #00d0ff,
+    #0066ff
+  );
+
+  box-shadow:
+  0 0 20px rgba(0,208,255,.7),
+  0 0 60px rgba(0,208,255,.4);
+
+  animation:pulse 1.5s infinite;
+
+  cursor:pointer;
+
+  user-select:none;
+}
+
+/* BOTÕES */
+.subway-buttons{
+  margin-top:26px;
+
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.sub-btn{
+  min-width:120px;
+
+  padding:14px 18px;
+
+  border:none;
+  border-radius:18px;
+
+  color:white;
+  font-size:14px;
+  font-weight:800;
+
+  background:
+  rgba(255,255,255,.08);
+
+  backdrop-filter:blur(10px);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  transition:.2s;
+}
+
+.sub-btn:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.15);
+}
+
+.sub-btn:active{
+  transform:scale(.96);
+}
+
+/* ANIMAÇÕES */
+@keyframes pulse{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.05);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+@keyframes bgMove{
+
+  from{
+    background-position:0 0;
+  }
+
+  to{
+    background-position:0 100px;
+  }
+
+}
+
+/* RESPONSIVO */
+@media(max-width:480px){
+
+  .subway-logo h1{
+    font-size:38px;
+  }
+
+  .tap-play{
+    font-size:18px;
+    padding:16px 30px;
+  }
+
+  .sub-btn{
+    min-width:100px;
+    font-size:13px;
+  }
+
+}
   </style>
+
 </head>
 <body>
   <div class="game-wrap" id="game-wrap">
+    <!-- TELA INICIAL -->
+<div class="subway-start" id="subway-start">
+
+  <div class="subway-bg"></div>
+
+  <div class="subway-logo">
+    <h1>NEON RACER</h1>
+    <span>ULTIMATE</span>
+  </div>
+
+  <div class="subway-center">
+
+    <div class="tap-play" id="tap-play">
+      TOQUE PARA JOGAR
+    </div>
+
+    <div class="subway-buttons">
+
+      <button class="sub-btn">
+        🏆 MISSÕES
+      </button>
+
+      <button class="sub-btn">
+        🚗 GARAGEM
+      </button>
+
+      <button class="sub-btn">
+        ⚙️ CONFIG
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
     <canvas id="game"></canvas>
 
     <audio id="bgm" loop preload="none">
@@ -289,26 +556,51 @@
 
     <div class="hud">
       <div class="hud-top">
-        <div class="pill" id="score-pill">🏁 <span class="muted">Pontos</span> <span id="score">0</span></div>
-        <div class="pill" id="speed-pill">⚡ <span class="muted">Vel.</span> <span id="speed">0</span></div>
-        <div class="pill" id="best-pill" title="Seu melhor">⭐ <span class="muted">Recorde</span> <span id="best">0</span></div>
-        <div class="badge" id="nitro-badge" title="Nitro ativo" style="opacity:.5;">
-        🪙 Money: <span id="money">0</span><br>
+
+        <div class="pill" id="score-pill">
+          🏁 <span class="muted">Pontos</span>
+          <span id="score">0</span>
+        </div>
+      
+        <div class="pill" id="speed-pill">
+          ⚡ <span class="muted">Vel</span>
+          <span id="speed">0</span>
+        </div>
+      
+        <div class="pill" id="best-pill">
+          ⭐ <span class="muted">Recorde</span>
+          <span id="best">0</span>
+        </div>
+      
+        <div class="pill">
+          🪙 <span class="muted">Money</span>
+          <span id="money">0</span>
+        </div>
+      
+        <div class="badge" id="nitro-badge" style="opacity:.5;">
           <span class="dot nitro"></span>
           <span>Nitro</span>
           <span id="nitro-time" class="muted">0.0s</span>
         </div>
-        <div class="badge" id="shield-badge" title="Escudo ativo" style="opacity:.5;">
+      
+        <div class="badge" id="shield-badge" style="opacity:.5;">
           <span class="dot shield"></span>
           <span>Escudo</span>
           <span id="shield-time" class="muted">—</span>
         </div>
-        <div class="pill" id="weather-pill" title="Clima atual">🌤️ <span id="weather">limpo</span></div>
-        <div class="pill" id="time-pill" title="Ciclo dia/noite">🕑 <span id="tod">dia</span></div>
-        <button class="btn" id="btn-sound" aria-label="Som">🔊 Som</button>
-      </div>
-      <div></div>
-      <div class="hud-bottom">
+      
+        <div class="pill" id="weather-pill">
+          🌤️ <span id="weather">limpo</span>
+        </div>
+      
+        <div class="pill" id="time-pill">
+          🕑 <span id="tod">dia</span>
+        </div>
+      
+        <button id="btn-sound" aria-label="Som">
+          🔊 Som
+        </button>
+      
         <div class="controls">
           <div class="control-btn" id="btn-left" aria-label="Esquerda">◀</div>
           <div class="control-btn" id="btn-right" aria-label="Direita">▶</div>
@@ -335,8 +627,7 @@
       <div class="card">
         <h1>🏎️ Neon Racer — Turbo</h1>
         <p>Desvie dos carros, colete power-ups e marque pontos. A velocidade aumenta com o tempo!</p>
-        <p><strong>Controles</strong>: ⬅️ ➡️ ou A/D • Toque nos botões • P = Pausar • R = Reiniciar</p>
-        <div class="row">
+         <div class="row">
           <button class="btn primary" id="start-play">Começar</button>
           <button class="btn" id="start-muted">Silenciar</button>
         </div>
@@ -355,12 +646,24 @@
     </div>
 
     <div class="frame" aria-hidden="true"></div>
+    <div class="car-color-picker">
+  <button class="color-btn active" data-color="#2ee6a6" style="background:#2ee6a6;"></button>
+  <button class="color-btn" data-color="#00d0ff" style="background:#00d0ff;"></button>
+  <button class="color-btn" data-color="#ff5577" style="background:#ff5577;"></button>
+  <button class="color-btn" data-color="#ffd54a" style="background:#ffd54a;"></button>
+  <button class="color-btn" data-color="#b26cff" style="background:#b26cff;"></button>
+  <button class="color-btn" data-color="#ffffff" style="background:#ffffff;"></button>
+
+</div>
   </div>
 
   <script>
   (function(){
     const canvas = document.getElementById('game');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', {
+      alpha:false,
+      desynchronized:true
+      });
     const wrap = document.getElementById('game-wrap');
 
     // HUD elements
@@ -384,20 +687,20 @@
     const finalScoreEl = document.getElementById('final-score');
     const finalBestEl = document.getElementById('final-best');
 
-    const btnStartTop = document.getElementById('btn-start');
     const btnPause = document.getElementById('btn-pause');
     const btnRestart = document.getElementById('btn-restart');
-    const btnLeft = document.getElementById('btn-left');
-    const btnRight = document.getElementById('btn-right');
     const btnSound = document.getElementById('btn-sound');
 
     const startPlay = document.getElementById('start-play');
     const startMuted = document.getElementById('start-muted');
     const againBtn = document.getElementById('again');
     const shareBtn = document.getElementById('share');
+    const subwayStart = document.getElementById('subway-start');
+    const tapPlay = document.getElementById('tap-play');
 
     const menuBtn = document.getElementById('menu-btn');
     const menuOptions = document.getElementById('menu-options');
+    const colorButtons = document.querySelectorAll('.color-btn');
 
     menuBtn.addEventListener('click', ()=>{
 
@@ -407,6 +710,39 @@
       menuOptions.style.display = 'flex';
     }
 
+    });
+
+    // =========================
+    // TROCA DE COR DO CARRO
+    // =========================
+
+    colorButtons.forEach(btn=>{
+    btn.addEventListener('pointerdown', (e)=>{
+
+    // impede conflito com movimento
+    e.stopPropagation();
+    e.preventDefault();
+
+    // remove seleção anterior
+    colorButtons.forEach(b=>{
+    b.classList.remove('active');
+    });
+
+    // ativa botão atual
+    btn.classList.add('active');
+
+    // pega cor do botão
+    const color = btn.dataset.color;
+
+    // troca cor do carro
+    player.color = color;
+
+    // salva cor
+    localStorage.setItem('neonPlayerColor', color);
+
+    // som
+    beep(900, 0.04, 'triangle', 0.03);
+    });
     });
 
     // Audio: music tag + WebAudio SFX
@@ -452,7 +788,8 @@
     const laneW = roadW / lanes;
 
     // Player
-    const player = { w: 60, h: 95, lane: 1, x: 0, y: 0, color: getCss('--car') };
+    const savedColor = localStorage.getItem('neonPlayerColor') || getCss('--car');
+    const player = {w: 44, h: 88, lane: 1, x: 0, y: 0, color: savedColor};
 
     // Entities
     const obstacles = [];
@@ -473,14 +810,15 @@
     for(const c of coins){
       ctx.save();
       ctx.shadowColor = 'gold';
-      ctx.shadowBlur = 20;
+      ctx.shadowBlur = isNitro(performance.now()/1000) ? 35 : 20;
       ctx.fillStyle = 'gold';
       ctx.beginPath();
       ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
       ctx.fill();
       ctx.fillStyle = '#000';
-      ctx.font = 'bold 14px Arial';
-      ctx.fillText('$', c.x - 4, c.y + 4);
+      ctx.font = 'bold 12px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('$', c.x, c.y + 4);
       ctx.restore();
       }
     }
@@ -640,7 +978,7 @@
     // =========================
     // ASA DIANTEIRA
     // =========================
-      ctx.fillStyle = '#0ff';
+      ctx.fillStyle = '#000';
       ctx.fillRect(x - w*0.35, y - h*0.52, w*0.7, h*0.06);
 
     // =========================
@@ -891,6 +1229,8 @@
       // cleanup off-screen
       while(obstacles.length && obstacles[0].y - obstacles[0].h/2 > H+40){ obstacles.shift(); score += 10; beep(990, 0.04, 'triangle', 0.02); }
       while(powerups.length && powerups[0].y - powerups[0].r > H+40){ powerups.shift(); }
+      while(coins.length > 20){coins.shift();}
+      obstacles.splice(0, Math.max(0, obstacles.length - 12));
 
       // difficulty ramp
       speed += dt * 6;
@@ -917,6 +1257,7 @@
           sfxShield();
           obstacles.sort((a,b)=>Math.abs(a.y-player.y)-Math.abs(b.y-player.y));
           obstacles.shift();
+          navigator.vibrate?.([120,50,120]);
         } else {
           gameOver();
           return;
@@ -961,28 +1302,33 @@
       if(k==='enter') startGame();
     });
 
-    // Touch / mouse
-    btnLeft.addEventListener('pointerdown', (e)=>{ e.preventDefault(); moveLeft(); });
-    btnRight.addEventListener('pointerdown', (e)=>{ e.preventDefault(); moveRight(); });
+    // =========================
+            // CONTROLE 
+    // =========================
 
-    // Full-area tap: left/right half
     wrap.addEventListener('pointerdown', (e)=>{
 
+    // ignora cliques em menus
     if(
-      e.target.closest('.controls') ||
       e.target.closest('.game-menu') ||
-      e.target.closest('.btn') ||
       e.target.closest('.menu-btn') ||
-      e.target.closest('.menu-item')
-      ) return;
+      e.target.closest('.menu-item') ||
+      e.target.closest('.sub-btn') ||
+      e.target.closest('.tap-play') ||
+      e.target.closest('.color-btn')
+    ) return;
 
+    // não move se jogo parado
+    if(!alive || paused) return;
       const rect = wrap.getBoundingClientRect();
-      const x = e.clientX - rect.left;
+      const touchX = e.clientX - rect.left;
 
-    if(x < rect.width/2){
-        moveLeft();
+    // lado esquerdo
+    if(touchX < rect.width / 2){
+
+      moveLeft();
     }else{
-        moveRight();
+      moveRight();
     }
 
     });
@@ -1003,6 +1349,18 @@
     startPlay.addEventListener('click', ()=>{ muted=false; try{bgm.volume=0.4; bgm.play().catch(()=>{});}catch{} startGame(); });
     startMuted.addEventListener('click', ()=>{ muted=true; try{bgm.pause();}catch{} startGame(); });
 
+    tapPlay.addEventListener('click', ()=>{
+      subwayStart.style.display = 'none';
+      muted = false;
+
+    try{
+      bgm.volume = 0.4;
+      bgm.play().catch(()=>{});
+    }catch{}
+
+    startGame();
+
+    });
     againBtn.addEventListener('click', ()=>{ restart(); startOverlay.style.display='none'; startGame(); });
 
     shareBtn.addEventListener('click', async ()=>{
