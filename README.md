@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
@@ -506,6 +507,7 @@
   }
 
 }
+
   </style>
 
 </head>
@@ -555,50 +557,94 @@
 
     <div class="hud">
       <div class="hud-top">
-
-        <div class="pill" id="score-pill">
-          🏁 <span class="muted">Pontos</span>
-          <span id="score">0</span>
+    
+        <!-- PONTOS -->
+        <div class="pill hud-card score-pill">
+          <div class="hud-icon">🏁</div>
+    
+          <div class="hud-info">
+            <span class="muted">PONTOS</span>
+            <span id="score" class="hud-value">0</span>
+          </div>
         </div>
-      
-        <div class="pill" id="speed-pill">
-          ⚡ <span class="muted">Vel</span>
-          <span id="speed">0</span>
+    
+        <!-- VELOCIDADE -->
+        <div class="pill hud-card speed-pill">
+          <div class="hud-icon">⚡</div>
+    
+          <div class="hud-info">
+            <span class="muted">VELOCIDADE</span>
+            <span id="speed" class="hud-value">0</span>
+          </div>
         </div>
-      
-        <div class="pill" id="best-pill">
-          ⭐ <span class="muted">Recorde</span>
-          <span id="best">0</span>
+    
+        <!-- RECORDE -->
+        <div class="pill hud-card best-pill">
+          <div class="hud-icon">⭐</div>
+    
+          <div class="hud-info">
+            <span class="muted">RECORDE</span>
+            <span id="best" class="hud-value">0</span>
+          </div>
         </div>
-      
-        <div class="pill">
-          🪙 <span class="muted">Money</span>
-          <span id="money">0</span>
+    
+        <!-- MONEY -->
+        <div class="pill hud-card money-pill">
+          <div class="hud-icon money-icon">🪙</div>
+    
+          <div class="hud-info">
+            <span class="muted">COINS</span>
+            <span id="money" class="hud-value">0</span>
+          </div>
         </div>
-      
-        <div class="badge" id="nitro-badge" style="opacity:.5;">
+    
+        <!-- NITRO -->
+        <div class="badge power-card" id="nitro-badge" style="opacity:.5;">
           <span class="dot nitro"></span>
-          <span>Nitro</span>
-          <span id="nitro-time" class="muted">0.0s</span>
+    
+          <div class="hud-info">
+            <span>Nitro</span>
+            <span id="nitro-time" class="muted">0.0s</span>
+          </div>
         </div>
-      
-        <div class="badge" id="shield-badge" style="opacity:.5;">
+    
+        <!-- ESCUDO -->
+        <div class="badge power-card" id="shield-badge" style="opacity:.5;">
           <span class="dot shield"></span>
-          <span>Escudo</span>
-          <span id="shield-time" class="muted">—</span>
+    
+          <div class="hud-info">
+            <span>Escudo</span>
+            <span id="shield-time" class="muted">—</span>
+          </div>
         </div>
-      
-        <div class="pill" id="weather-pill">
-          🌤️ <span id="weather">limpo</span>
+    
+        <!-- CLIMA -->
+        <div class="pill hud-card">
+          <div class="hud-icon">🌤️</div>
+    
+          <div class="hud-info">
+            <span class="muted">CLIMA</span>
+            <span id="weather" class="hud-value">limpo</span>
+          </div>
         </div>
-      
-        <div class="pill" id="time-pill">
-          🕑 <span id="tod">dia</span>
+    
+        <!-- TEMPO -->
+        <div class="pill hud-card">
+          <div class="hud-icon">🕑</div>
+    
+          <div class="hud-info">
+            <span class="muted">HORÁRIO</span>
+            <span id="tod" class="hud-value">dia</span>
+          </div>
         </div>
-      
-        <button id="btn-sound" aria-label="Som">
+    
+        <!-- SOM -->
+        <button id="btn-sound">
           🔊 Som
         </button>
+    
+      </div>
+    </div>
       
         <div class="controls">
           <div class="control-btn" id="btn-left" aria-label="Esquerda">◀</div>
@@ -945,7 +991,7 @@
 
     // brilho neon
       ctx.shadowColor = color;
-      ctx.shadowBlur = 20;
+      ctx.shadowBlur = 12;
 
     // =========================
     // AEROFÓLIO TRASEIRO
@@ -1191,7 +1237,7 @@
         for(const f of precip){ f.x += f.drift*dt; f.y += f.vy*dt; if(f.y>H+10){ f.x = Math.random()*W; f.y = -10; } }
       }
 
-      stripeOffset += roadSpeed * dt * 0.9;
+      stripeOffset -= roadSpeed * dt * 1.4;
       spawnTimer -= dt;
       if(spawnTimer <= 0){
         spawnObstacle();
@@ -1229,7 +1275,9 @@
       while(obstacles.length && obstacles[0].y - obstacles[0].h/2 > H+40){ obstacles.shift(); score += 10; beep(990, 0.04, 'triangle', 0.02); }
       while(powerups.length && powerups[0].y - powerups[0].r > H+40){ powerups.shift(); }
       while(coins.length > 20){coins.shift();}
-      obstacles.splice(0, Math.max(0, obstacles.length - 12));
+      if(obstacles.length > 12){
+      obstacles.shift();
+      }
 
       // difficulty ramp
       speed += dt * 6;
