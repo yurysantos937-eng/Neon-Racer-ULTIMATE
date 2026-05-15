@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
@@ -643,8 +642,6 @@
           🔊 Som
         </button>
     
-      </div>
-    </div>
       
         <div class="controls">
           <div class="control-btn" id="btn-left" aria-label="Esquerda">◀</div>
