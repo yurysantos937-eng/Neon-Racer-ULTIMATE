@@ -1033,7 +1033,7 @@
         </button>
     
       </div>
-    </div>
+  
       
         <div class="controls">
           <div class="control-btn" id="btn-left" aria-label="Esquerda">◀</div>
