@@ -832,6 +832,9 @@
 
       <div class="cockpit"></div>
 
+      
+         </div>
+
        </div>
 
     </div>
@@ -1052,6 +1055,7 @@
               ↻ Reiniciar
             </button>
 
+           </div>
           </div>
       </div>
     </div>
@@ -1074,7 +1078,7 @@
         <div class="row">
           <button class="btn primary" id="again">Jogar de novo</button>
           <button class="btn" id="share">Compartilhar</button>
-        </div>
+       
       </div>
     </div>
    </div>
