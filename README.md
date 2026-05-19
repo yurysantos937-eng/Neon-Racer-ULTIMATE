@@ -809,6 +809,7 @@
     <button class="garage-back" id="garage-back">
       ←
     </button>
+</div>
 
     <h2>GARAGEM</h2>
 
@@ -832,7 +833,6 @@
 
       <div class="cockpit"></div>
 
-         </div>
        </div>
 
     </div>
