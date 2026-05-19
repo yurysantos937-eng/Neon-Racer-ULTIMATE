@@ -811,7 +811,6 @@
 
     <h2>GARAGEM</h2>
 
-  </div>
 
   <!-- PREVIEW -->
   <div class="garage-preview">
@@ -831,6 +830,8 @@
       <div class="wheel w4"></div>
 
       <div class="cockpit"></div>
+
+       </div>
 
     </div>
 
