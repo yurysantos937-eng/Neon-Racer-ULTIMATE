@@ -1034,7 +1034,7 @@
         <div class="controls">
           <div class="control-btn" id="btn-left" aria-label="Esquerda">◀</div>
           <div class="control-btn" id="btn-right" aria-label="Direita">▶</div>
-        </div>
+        
         <div class="game-menu">
           <button class="menu-btn" id="menu-btn">☰</button>
         
@@ -1052,7 +1052,6 @@
               ↻ Reiniciar
             </button>
 
-            </div>
           </div>
       </div>
     </div>
@@ -1078,7 +1077,7 @@
         </div>
       </div>
     </div>
-
+   </div>
 
   <script>
   (function(){
