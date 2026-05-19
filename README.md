@@ -11,6 +11,7 @@
       --stripe: #dadde6;
       --accent: #6cf;
       --car: #2244ff;
+      --garage-color: #2ee6a6;
       --obstacle: #ff5577;
       --power-nitro: #00d0ff;
       --power-shield: #ffd54a;
@@ -349,14 +350,10 @@
 
 .subway-logo h1{
   margin:0;
-
   font-size:52px;
   font-weight:900;
-
   letter-spacing:3px;
-
   color:#00d0ff;
-
   text-shadow:
   0 0 10px #00d0ff,
   0 0 25px #00d0ff,
@@ -365,41 +362,31 @@
 
 .subway-logo span{
   display:block;
-
   margin-top:6px;
-
   color:#fff;
   font-size:18px;
   font-weight:700;
   letter-spacing:5px;
-
   opacity:.9;
 }
 
 /* CENTRO */
 .subway-center{
   z-index:2;
-
   width:100%;
-
   display:flex;
   flex-direction:column;
   align-items:center;
-
   margin-bottom:55px;
 }
 
 /* TOQUE PARA JOGAR */
 .tap-play{
   padding:18px 42px;
-
   border-radius:999px;
-
   font-size:22px;
   font-weight:900;
-
   color:white;
-
   background:
   linear-gradient(
     180deg,
@@ -410,11 +397,8 @@
   box-shadow:
   0 0 20px rgba(0,208,255,.7),
   0 0 60px rgba(0,208,255,.4);
-
   animation:pulse 1.5s infinite;
-
   cursor:pointer;
-
   user-select:none;
 }
 
@@ -430,23 +414,17 @@
 
 .sub-btn{
   min-width:120px;
-
   padding:14px 18px;
-
   border:none;
   border-radius:18px;
-
   color:white;
   font-size:14px;
   font-weight:800;
 
   background:
   rgba(255,255,255,.08);
-
   backdrop-filter:blur(10px);
-
   border:1px solid rgba(255,255,255,.08);
-
   transition:.2s;
 }
 
@@ -507,6 +485,310 @@
 
 }
 
+/* =========================
+          GARAGEM
+========================= */
+
+.garage-screen{
+  position:absolute;
+  inset:0;
+
+  z-index:999999;
+
+  display:none;
+  flex-direction:column;
+
+  background:
+  linear-gradient(
+    180deg,
+    #020617,
+    #0f172a
+  );
+}
+
+.garage-top{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  padding:18px;
+}
+
+.garage-top h2{
+  margin:0;
+
+  color:white;
+
+  font-size:26px;
+  font-weight:900;
+
+  letter-spacing:2px;
+}
+
+.garage-back{
+  width:46px;
+  height:46px;
+
+  border:none;
+  border-radius:14px;
+
+  background:rgba(255,255,255,.08);
+
+  color:white;
+
+  font-size:22px;
+  font-weight:bold;
+}
+
+.garage-preview{
+  flex:1;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  position:relative;
+}
+
+.garage-car-glow{
+  position:absolute;
+
+  width:220px;
+  height:220px;
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(
+    circle,
+    rgba(0,208,255,.45),
+    transparent 70%
+  );
+
+  filter:blur(20px);
+}
+
+.garage-car{
+  position:relative;
+
+  width:220px;
+  height:420px;
+
+  transform:scale(1.1);
+}
+
+.f1-body{
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  width:70px;
+  height:250px;
+
+  transform:translate(-50%,-50%);
+
+  border-radius:30px;
+
+  background:var(--garage-color);
+
+  box-shadow:
+  0 0 30px var(--garage-color);
+}
+
+.cockpit{
+  position:absolute;
+
+  left:50%;
+  top:130px;
+
+  width:34px;
+  height:80px;
+
+  transform:translateX(-50%);
+
+  border-radius:18px;
+
+  background:#111;
+}
+
+.f1-wing{
+  position:absolute;
+
+  left:50%;
+
+  width:140px;
+  height:18px;
+
+  transform:translateX(-50%);
+
+  background:#000;
+
+  border-radius:8px;
+}
+
+.f1-wing.front{
+  top:50px;
+}
+
+.f1-wing.rear{
+  bottom:50px;
+}
+
+.wheel{
+  position:absolute;
+
+  width:26px;
+  height:60px;
+
+  border-radius:12px;
+
+  background:#050505;
+}
+
+.w1{ left:45px; top:70px; }
+.w2{ right:45px; top:70px; }
+
+.w3{ left:45px; bottom:70px; }
+.w4{ right:45px; bottom:70px; }
+
+/* =========================
+      PALETA ESCONDIDA
+========================= */
+
+.palette-wrapper{
+  position:absolute;
+  bottom:25px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  z-index:9999;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  gap:14px;
+}
+
+/* BOTÃO */
+.palette-toggle{
+  padding:14px 26px;
+
+  border:none;
+  border-radius:999px;
+
+  background:
+  linear-gradient(
+    180deg,
+    #00d0ff,
+    #0066ff
+  );
+
+  color:white;
+
+  font-size:15px;
+  font-weight:900;
+
+  letter-spacing:1px;
+
+  box-shadow:
+  0 0 20px rgba(0,208,255,.6);
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.palette-toggle:hover{
+  transform:scale(1.05);
+}
+
+.palette-toggle:active{
+  transform:scale(.96);
+}
+
+/* MENU */
+.garage-palettes{
+  display:none;
+
+  grid-template-columns:
+  repeat(4,1fr);
+
+  gap:14px;
+
+  padding:18px;
+
+  border-radius:24px;
+
+  background:
+  rgba(0,0,0,.45);
+
+  backdrop-filter:blur(16px);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  animation:paletteOpen .25s ease;
+}
+
+/* ANIMAÇÃO */
+@keyframes paletteOpen{
+
+  from{
+    opacity:0;
+    transform:
+    translateY(10px)
+    scale(.9);
+  }
+
+  to{
+    opacity:1;
+    transform:
+    translateY(0)
+    scale(1);
+  }
+
+}
+
+/* COR */
+.garage-color{
+  width:52px;
+  height:52px;
+
+  border:none;
+  border-radius:50%;
+
+  background:var(--c);
+
+  cursor:pointer;
+
+  position:relative;
+
+  transition:.2s;
+
+  box-shadow:
+  0 0 16px var(--c);
+}
+
+.garage-color:hover{
+  transform:scale(1.12);
+}
+
+.garage-color.active{
+  border:3px solid white;
+
+  transform:scale(1.15);
+
+  box-shadow:
+  0 0 25px white;
+}
+
+/* REMOVE SPAN */
+.garage-color span{
+  display:none;
+}
+
   </style>
 
 </head>
@@ -514,6 +796,109 @@
   <div class="game-wrap" id="game-wrap">
     <!-- TELA INICIAL -->
 <div class="subway-start" id="subway-start">
+
+  <!-- =========================
+          GARAGEM
+  ========================= -->
+
+<div class="garage-screen" id="garage-screen">
+
+  <div class="garage-top">
+
+    <button class="garage-back" id="garage-back">
+      ←
+    </button>
+
+    <h2>GARAGEM</h2>
+
+  </div>
+
+  <!-- PREVIEW -->
+  <div class="garage-preview">
+
+    <div class="garage-car-glow"></div>
+
+    <div class="garage-car" id="garage-car">
+
+      <div class="f1-body"></div>
+
+      <div class="f1-wing front"></div>
+      <div class="f1-wing rear"></div>
+
+      <div class="wheel w1"></div>
+      <div class="wheel w2"></div>
+      <div class="wheel w3"></div>
+      <div class="wheel w4"></div>
+
+      <div class="cockpit"></div>
+
+    </div>
+
+  </div>
+
+  <!-- BOTÃO PALETA -->
+<div class="palette-wrapper">
+  <div class="palette-colors" id="palette-colors"></div>
+  <button class="palette-toggle" id="palette-toggle">
+    🎨 CORES
+  </button>
+
+  <!-- MENU DE CORES -->
+  <div class="garage-palettes" id="garage-palettes">
+
+    <button class="garage-color active"
+    data-color="#2ee6a6"
+    style="--c:#2ee6a6;">
+      <span></span>
+    </button>
+
+    <button class="garage-color"
+    data-color="#00d0ff"
+    style="--c:#00d0ff;">
+      <span></span>
+    </button>
+
+    <button class="garage-color"
+    data-color="#ff5577"
+    style="--c:#ff5577;">
+      <span></span>
+    </button>
+
+    <button class="garage-color"
+    data-color="#ffd54a"
+    style="--c:#ffd54a;">
+      <span></span>
+    </button>
+
+    <button class="garage-color"
+    data-color="#b26cff"
+    style="--c:#b26cff;">
+      <span></span>
+    </button>
+
+    <button class="garage-color"
+    data-color="#ffffff"
+    style="--c:#ffffff;">
+      <span></span>
+    </button>
+
+    <button class="garage-color"
+    data-color="#ff8800"
+    style="--c:#ff8800;">
+      <span></span>
+    </button>
+
+    <button class="garage-color"
+    data-color="#00ff99"
+    style="--c:#00ff99;">
+      <span></span>
+    </button>
+    
+  </div>
+
+</div>
+
+</div>
 
   <div class="subway-bg"></div>
 
@@ -534,7 +919,7 @@
         🏆 MISSÕES
       </button>
 
-      <button class="sub-btn">
+      <button class="sub-btn" id="open-garage">
         🚗 GARAGEM
       </button>
 
@@ -642,6 +1027,8 @@
           🔊 Som
         </button>
     
+      </div>
+    </div>
       
         <div class="controls">
           <div class="control-btn" id="btn-left" aria-label="Esquerda">◀</div>
@@ -655,10 +1042,15 @@
             <button class="menu-item" id="btn-pause">
               ⏸ Pausar
             </button>
+
+            <button class="menu-item" id="btn-home">
+              🏠 Início
+            </button>
         
             <button class="menu-item danger" id="btn-restart">
               ↻ Reiniciar
             </button>
+
         
           </div>
         </div>
@@ -687,17 +1079,6 @@
       </div>
     </div>
 
-    <div class="frame" aria-hidden="true"></div>
-    <div class="car-color-picker">
-  <button class="color-btn active" data-color="#2ee6a6" style="background:#2ee6a6;"></button>
-  <button class="color-btn" data-color="#00d0ff" style="background:#00d0ff;"></button>
-  <button class="color-btn" data-color="#ff5577" style="background:#ff5577;"></button>
-  <button class="color-btn" data-color="#ffd54a" style="background:#ffd54a;"></button>
-  <button class="color-btn" data-color="#b26cff" style="background:#b26cff;"></button>
-  <button class="color-btn" data-color="#ffffff" style="background:#ffffff;"></button>
-
-</div>
-  </div>
 
   <script>
   (function(){
@@ -732,6 +1113,7 @@
     const btnPause = document.getElementById('btn-pause');
     const btnRestart = document.getElementById('btn-restart');
     const btnSound = document.getElementById('btn-sound');
+    const btnHome = document.getElementById('btn-home');
 
     const startPlay = document.getElementById('start-play');
     const startMuted = document.getElementById('start-muted');
@@ -742,50 +1124,65 @@
 
     const menuBtn = document.getElementById('menu-btn');
     const menuOptions = document.getElementById('menu-options');
-    const colorButtons = document.querySelectorAll('.color-btn');
+    /* =========================
+          GARAGEM
+    ========================= */
+
+      const garageScreen =
+      document.getElementById('garage-screen');
+
+      const openGarage =
+      document.getElementById('open-garage');
+
+      const garageBack =
+      document.getElementById('garage-back');
+
+      const garageCar =
+      document.getElementById('garage-car');
+
+      const garageColors =
+      document.querySelectorAll('.garage-color');
+
+      const paletteToggle =
+      document.getElementById('palette-toggle');
+
+      const garagePalettes =
+      document.getElementById('garage-palettes');
+
+    /* ABRIR / FECHAR PALETA */
+    paletteToggle.addEventListener('click', ()=>{
+
+    if(garagePalettes.style.display === 'grid'){
+      garagePalettes.style.display = 'none';
+
+    }else{
+
+      garagePalettes.style.display = 'grid';
+
+    }
+
+    });
+      
+
+    /* =========================
+      MENU FLUTUANTE
+    ========================= */
 
     menuBtn.addEventListener('click', ()=>{
 
-      if(menuOptions.style.display === 'flex'){
-      menuOptions.style.display = 'none';
-      } else {
-      menuOptions.style.display = 'flex';
+    if(menuOptions.style.display === 'flex'){
+
+    menuOptions.style.display = 'none';
+
+    }else{
+
+    menuOptions.style.display = 'flex';
+
     }
 
     });
 
-    // =========================
-    // TROCA DE COR DO CARRO
-    // =========================
-
-    colorButtons.forEach(btn=>{
-    btn.addEventListener('pointerdown', (e)=>{
-
-    // impede conflito com movimento
-    e.stopPropagation();
-    e.preventDefault();
-
-    // remove seleção anterior
-    colorButtons.forEach(b=>{
-    b.classList.remove('active');
-    });
-
-    // ativa botão atual
-    btn.classList.add('active');
-
-    // pega cor do botão
-    const color = btn.dataset.color;
-
-    // troca cor do carro
-    player.color = color;
-
-    // salva cor
-    localStorage.setItem('neonPlayerColor', color);
-
-    // som
-    beep(900, 0.04, 'triangle', 0.03);
-    });
-    });
+    
 
     // Audio: music tag + WebAudio SFX
     const bgm = document.getElementById('bgm');
@@ -836,6 +1233,8 @@
     // Entities
     const obstacles = [];
     const powerups = []; // {type:'nitro'|'shield', lane, x, y, r}
+    // prédios da cidade
+    const buildings = [];
 
     // =========================
     // SISTEMA DE MOEDAS
@@ -911,7 +1310,31 @@
     let nitroUntil = 0;         // timestamp (performance.now()/1000)
     let shieldActive = false;   // true if has shield
 
-    function laneCenter(i){ return roadX + laneW*i + laneW/2; }
+      function laneCenter(i){ return roadX + laneW*i + laneW/2; }
+      function generateBuildings(){
+
+      buildings.length = 0;
+
+    for(let i = 0; i < 40; i++){
+
+        const side = Math.random() < 0.5 ? 'left' : 'right';
+
+        buildings.push({
+
+        side,
+
+        x:
+        side === 'left'
+        ? Math.random() * 30
+        : W - 30 - Math.random()*50,
+        y: i * 80,
+        w: 25 + Math.random()*40,
+        h: 80 + Math.random()*160
+      });
+
+    }
+
+    }
 
     function reset(){
       score = 0; speed = 220; alive = false; paused = false; last = 0; spawnTimer = 0; stripeOffset = 0;
@@ -986,6 +1409,9 @@
     function drawCar(x, y, w, h, color){
       ctx.save();
 
+    // animação das rodas
+      const wheelSpin = performance.now() * 0.02;
+
     // brilho neon
       ctx.shadowColor = color;
       ctx.shadowBlur = 12;
@@ -1024,19 +1450,54 @@
       ctx.fillRect(x - w*0.35, y - h*0.52, w*0.7, h*0.06);
 
     // =========================
-    // RODAS
+    // RODAS MELHORADAS
     // =========================
-      ctx.fillStyle = '#000';
-      const rw = w*0.12;
-      const rh = h*0.16;
 
-    // dianteiras
-      ctx.fillRect(x - w*0.34, y - h*0.34, rw, rh);
-      ctx.fillRect(x + w*0.22, y - h*0.34,rw, rh);
+      const rw = w * 0.12;
+      const rh = h * 0.18;
 
-    // traseiras
-      ctx.fillRect(x - w*0.34, y + h*0.12, rw, rh);
-      ctx.fillRect(x + w*0.22, y + h*0.12, rw, rh);
+    // animação
+      const spin = performance.now() * 0.02;
+    function drawWheel(wx, wy){
+      ctx.save();
+
+    // pneu
+      ctx.fillStyle = '#050505';
+      ctx.beginPath();
+      roundRect(wx, wy, rw, rh, 4, true, false);
+      ctx.fill();
+
+    // brilho neon
+      ctx.shadowColor = '#00d0ff';
+      ctx.shadowBlur = 8;
+
+    // linhas simulando giro
+      ctx.strokeStyle = '#00d0ff';
+      ctx.lineWidth = 2;
+
+      const lineY = (spin % rh);
+
+      ctx.beginPath();
+      ctx.moveTo(wx + 2, wy + lineY);
+      ctx.lineTo(wx + rw - 2, wy + lineY);
+      ctx.stroke();
+
+    // segunda linha
+      ctx.globalAlpha = 0.5;
+      ctx.beginPath();
+      ctx.moveTo(wx + 2, wy + ((lineY + rh/2) % rh));
+      ctx.lineTo(wx + rw - 2, wy + ((lineY + rh/2) % rh));
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // rodas dianteiras
+      drawWheel(x - w*0.34, y - h*0.34);
+      drawWheel(x + w*0.22, y - h*0.34);
+
+    // rodas traseiras
+      drawWheel(x - w*0.34, y + h*0.12);
+      drawWheel(x + w*0.22, y + h*0.12);
 
     // detalhe central
       ctx.fillStyle = '#fff';
@@ -1054,7 +1515,7 @@
       grad.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = grad;
       ctx.shadowColor = glow.trim();
-      ctx.shadowBlur = 20;
+      ctx.shadowBlur = 10;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
       ctx.fill();
@@ -1149,8 +1610,7 @@
       }
       drawCar(player.x, player.y, player.w, player.h, player.color);
 
-      // precipitation overlay
-      drawWeatherOverlays();
+
 
       // headlights at night
       const l = skyLight();
@@ -1212,7 +1672,9 @@
       const dt = Math.min(0.032, (t - last) / 1000); // seconds
       
       last = t;
-      if(paused){ requestAnimationFrame(loop); return; }
+      if(paused){
+      return;
+      }
 
       const nowSec = t / 1000;
 
@@ -1389,6 +1851,53 @@
 
     btnPause.addEventListener('click', togglePause);
     btnRestart.addEventListener('click', restart);
+    btnHome.addEventListener('click', goHome);
+
+    /* =========================
+        GARAGEM
+    ========================= */
+
+    openGarage.addEventListener('click', ()=>{
+    garageScreen.style.display = 'flex';
+
+    });
+
+    garageBack.addEventListener('click', ()=>{
+    garageScreen.style.display = 'none';
+
+    });
+
+    garageColors.forEach(btn=>{
+
+    btn.addEventListener('click', ()=>{
+
+    garageColors.forEach(b=>{
+    b.classList.remove('active');
+    });
+
+    btn.classList.add('active');
+    const color = btn.dataset.color;
+
+  // muda carro jogo
+  player.color = color;
+
+  // muda preview
+  document.documentElement
+  .style
+  .setProperty('--garage-color', color);
+
+  // salva
+  localStorage.setItem(
+    'neonPlayerColor',
+    color
+  );
+
+  beep(900,0.05,'triangle',0.03);
+
+    });
+
+    });
+
 
     startPlay.addEventListener('click', ()=>{ muted=false; try{bgm.volume=0.4; bgm.play().catch(()=>{});}catch{} startGame(); });
     startMuted.addEventListener('click', ()=>{ muted=true; try{bgm.pause();}catch{} startGame(); });
@@ -1405,6 +1914,40 @@
     startGame();
 
     });
+
+    
+
+    function goHome(){
+
+    // para jogo
+      alive = false;
+      paused = false;
+
+    // limpa objetos
+      obstacles.length = 0;
+      powerups.length = 0;
+      coins.length = 0;
+
+    // esconde game over
+      gameoverOverlay.style.display = 'none';
+
+    // mostra tela inicial
+      subwayStart.style.display = 'flex';
+
+    // fecha menu
+      menuOptions.style.display = 'none';
+
+    // pausa música
+    try{
+      bgm.pause();
+      bgm.currentTime = 0;
+    }catch{}
+
+    // reseta jogo
+      reset();
+
+    }
+
     againBtn.addEventListener('click', ()=>{ restart(); startOverlay.style.display='none'; startGame(); });
 
     shareBtn.addEventListener('click', async ()=>{
