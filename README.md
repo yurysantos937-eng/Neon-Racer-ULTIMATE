@@ -904,8 +904,6 @@
 
 </div>
 
-</div>
-
   <div class="subway-bg"></div>
 
   <div class="subway-logo">
