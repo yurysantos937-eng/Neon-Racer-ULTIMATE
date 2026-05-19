@@ -797,7 +797,6 @@
     <!-- TELA INICIAL -->
 <div class="subway-start" id="subway-start">
 
-  </div>
 
   <!-- =========================
           GARAGEM
@@ -833,6 +832,7 @@
 
       <div class="cockpit"></div>
 
+         </div>
        </div>
 
     </div>
