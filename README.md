@@ -843,6 +843,8 @@
   <button class="palette-toggle" id="palette-toggle">
     🎨 CORES
   </button>
+      
+     </div>
 
   <!-- MENU DE CORES -->
   <div class="garage-palettes" id="garage-palettes">
