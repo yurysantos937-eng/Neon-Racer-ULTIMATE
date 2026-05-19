@@ -944,6 +944,7 @@
     </audio>
 
     <div class="hud">
+</div>
       <div class="hud-top">
     
         <!-- PONTOS -->
