@@ -904,6 +904,8 @@
 
 </div>
 
+</div>
+
   <div class="subway-bg"></div>
 
   <div class="subway-logo">
@@ -976,6 +978,7 @@
             <span id="best" class="hud-value">0</span>
           </div>
         </div>
+      </div>
     
         <!-- MONEY -->
         <div class="pill hud-card money-pill">
@@ -1084,6 +1087,7 @@
       </div>
     </div>
    </div>
+  </div>
 
   <script>
   (function(){
