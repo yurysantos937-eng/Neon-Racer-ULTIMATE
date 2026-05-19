@@ -797,6 +797,8 @@
     <!-- TELA INICIAL -->
 <div class="subway-start" id="subway-start">
 
+  </div>
+
   <!-- =========================
           GARAGEM
   ========================= -->
@@ -810,7 +812,6 @@
     </button>
 
     <h2>GARAGEM</h2>
-      </div>
 
 
   <!-- PREVIEW -->
