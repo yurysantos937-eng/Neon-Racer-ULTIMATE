@@ -833,6 +833,9 @@
       <div class="cockpit"></div>
 
       
+        </div>
+
+      </div>
 
     </div>
 
