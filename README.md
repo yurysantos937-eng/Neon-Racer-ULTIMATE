@@ -789,8 +789,6 @@
   display:none;
 }
 
-</div>
-
   </style>
 
 </head>
@@ -1056,7 +1054,6 @@
 
         
           </div>
-        </div>
       </div>
     </div>
 
