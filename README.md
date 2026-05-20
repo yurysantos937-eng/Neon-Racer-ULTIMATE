@@ -1054,7 +1054,6 @@
         
           </div>
         </div>
-      </div>
 
     <div class="overlay" id="start-overlay">
       <div class="card">
