@@ -1055,7 +1055,6 @@
           </div>
         </div>
       </div>
-    </div>
 
     <div class="overlay" id="start-overlay">
       <div class="card">
@@ -1066,6 +1065,7 @@
           <button class="btn" id="start-muted">Silenciar</button>
         </div>
       </div>
+    </div>
 
     <div class="overlay" id="gameover-overlay" style="display:none;">
       <div class="card">
