@@ -797,7 +797,6 @@
     <!-- TELA INICIAL -->
 <div class="subway-start" id="subway-start">
 
-
   <!-- =========================
           GARAGEM
   ========================= -->
@@ -812,6 +811,7 @@
 
     <h2>GARAGEM</h2>
 
+  </div>
 
   <!-- PREVIEW -->
   <div class="garage-preview">
@@ -832,11 +832,6 @@
 
       <div class="cockpit"></div>
 
-      
-        </div>
-
-      </div>
-
     </div>
 
   </div>
@@ -847,8 +842,6 @@
   <button class="palette-toggle" id="palette-toggle">
     🎨 CORES
   </button>
-      
-      </div>
 
   <!-- MENU DE CORES -->
   <div class="garage-palettes" id="garage-palettes">
@@ -901,7 +894,7 @@
       <span></span>
     </button>
     
-</div>
+  </div>
 
 </div>
 
@@ -947,7 +940,6 @@
     </audio>
 
     <div class="hud">
-</div>
       <div class="hud-top">
     
         <!-- PONTOS -->
@@ -979,7 +971,6 @@
             <span id="best" class="hud-value">0</span>
           </div>
         </div>
-      </div>
     
         <!-- MONEY -->
         <div class="pill hud-card money-pill">
@@ -1037,13 +1028,12 @@
         </button>
     
       </div>
-      </div>
-  
+    </div>
       
         <div class="controls">
           <div class="control-btn" id="btn-left" aria-label="Esquerda">◀</div>
           <div class="control-btn" id="btn-right" aria-label="Direita">▶</div>
-        
+        </div>
         <div class="game-menu">
           <button class="menu-btn" id="menu-btn">☰</button>
         
@@ -1061,8 +1051,9 @@
               ↻ Reiniciar
             </button>
 
-          
+        
           </div>
+        </div>
       </div>
     </div>
 
@@ -1075,7 +1066,6 @@
           <button class="btn" id="start-muted">Silenciar</button>
         </div>
       </div>
-    </div>
 
     <div class="overlay" id="gameover-overlay" style="display:none;">
       <div class="card">
@@ -1084,11 +1074,10 @@
         <div class="row">
           <button class="btn primary" id="again">Jogar de novo</button>
           <button class="btn" id="share">Compartilhar</button>
-       
+        </div>
       </div>
     </div>
-   </div>
-  </div>
+
 
   <script>
   (function(){
